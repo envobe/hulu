@@ -24,7 +24,7 @@ var ajaxload = function(url){
     if($("body .ajaxloading").length == 0) {
         //$(".header").append("<div class=\"ajaxloading\"><span></span></div>");
         $(".wrapper").after($("<div class=\"ajaxloading\" style=\"background:lightgray;opacity:0.8;top:0;position:fixed;z-index:999;width:100%;height:100%;margin:0;padding:0;vertical-align:middle;\"><div class=\"loading-content\" style=\"text-align:center;width:100%;height:10px;position:absolute;top:50%;margin-top:-5px;\"><span style=\"\">" + (($('html').attr('lang') == "zh")?"加载中…":"loading...") + "</span></div></div>"));
-        $.ajax({
+        /*$.ajax({
             type: "GET",
             url: url,
             success: function(data){
@@ -35,6 +35,9 @@ var ajaxload = function(url){
                 //$(".header .ajaxloading").remove();
                 $("body .ajaxloading").remove();
             }
+        });*/
+        $("body").load(url + " .wrapper", function(){
+            commonevent();
         });
     }
 }
